@@ -28,20 +28,20 @@
   (is (not (path-from-to? example-graph S T (route S T)))))
 
 (deftest distance-test
-  (let [pm {B (path-info 15 A)}]
-    (is (= 15 (distance pm B)))))
+  (let [path-map {B (path-info 15 A)}]
+    (is (= 15 (distance path-map B)))))
 
 (deftest distance-infinity-test
-  (let [pm {}]
-    (is (= ##Inf (distance pm B)))))
+  (let [path-map {}]
+    (is (= ##Inf (distance path-map B)))))
 
 (deftest previous-test
-  (let [pm {B (path-info 15 A)}]
-    (is (= 15 (distance pm B)))))
+  (let [path-map {B (path-info 15 A)}]
+    (is (= A (previous path-map B)))))
 
 (deftest previous-unknown-test
-  (let [pm {}]
-    (is (= nil (previous pm B)))))
+  (let [path-map {}]
+    (is (= nil (previous path-map B)))))
 
 (deftest update-distances-test
   (let [path-map-0 {S (path-info 0 nil)}
